@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestor de Tareas</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Estilo adicional para el scrolling */
+        .columns {
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+        .column {
+            min-width: 250px;
+            overflow-y: auto;
+            max-height: 80vh;
+        }
+        .task-card {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="column has-background-black-ter">
+    <h1 class="title has-text-centered">Gestor de Tareas</h1>
+  </div>
+  <div class="column is-full">
+    <!-- Botón para agregar nueva tarea -->
+      <button class="button is-black mb-4 is-responsive :hover :active is-rounded is-pulled-right" id="newTaskBtn">Nueva Tarea</button>  
+    </div>  
+      <!-- Contenedor de columnas -->
+    <div class="columns is-mobile is-centered">
+        <div class="column backlog is-2 is-one-fifth has-background-grey-darker">
+              <h2 class="subtitle has-text-centered has-text-white">Backlog</h2>
+        </div>
+          <div class="column todo is-2 is-one-fifth has-background-grey-darker">
+            <h2 class="subtitle has-text-centered has-text-white">To Do</h2>
+        </div>
+        <div class="column in-progress is-2 is-one-fifth has-background-grey-darker">
+            <h2 class="subtitle has-text-centered has-text-white">In Progress</h2>
+        </div>
+        <div class="column blocked is-2 is-one-fifth has-background-grey-darker">
+            <h2 class="subtitle has-text-centered has-text-white">Blocked</h2>
+        </div>
+        <div class="column done is-one-fifth has-background-grey-darker">
+            <h2 class="subtitle has-text-centered has-text-white">Done</h2>
+        </div>
+    </div>
+  
+</div>
+
+<!-- Modal para nueva tarea -->
+<div class="modal" id="taskModal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+        <header class="modal-card-head">
+            <p class="modal-card-title">Nueva Tarea</p>
+            <button class="delete" aria-label="close"></button>
+        </header>
+        <section class="modal-card-body">
+            <form id="taskForm">
+                <div class="field">
+                    <label class="label">Título</label>
+                    <div class="control">
+                        <input class="input" type="text" id="taskTitle" placeholder="Título de la tarea">
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Descripción</label>
+                    <div class="control">
+                        <textarea class="textarea" id="taskDescription" placeholder="Descripción de la tarea"></textarea>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Asignado</label>
+                    <div class="control">
+                        <div class="select">
+                            <select id="taskAssigned">
+                                <option>Luis Suárez</option>
+                                <option>Nicolás López</option>
+                                <option>Bruno Fornarolli</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Prioridad</label>
+                    <div class="control">
+                        <div class="select">
+                            <select id="taskPriority">
+                                <option>Alta</option>
+                                <option>Media</option>
+                                <option>Baja</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Estado</label>
+                    <div class="control">
+                        <div class="select">
+                            <select id="taskState">
+                                <option>Backlog</option>
+                                <option>To Do</option>
+                                <option>In Progress</option>
+                                <option>Blocked</option>
+                                <option>Done</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Fecha Límite</label>
+                    <div class="control">
+                        <input class="input" type="date" id="taskDeadline">
+                    </div>
+                </div>
+            </form>
+        </section>
+        <footer class="modal-card-foot">
+            <button class="button is-success" id="saveTaskBtn">Guardar</button>
+            <button class="button" id="cancelTaskBtn">Cancelar</button>
+        </footer>
+    </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

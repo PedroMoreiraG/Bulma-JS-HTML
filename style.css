@@ -1,0 +1,12 @@
+.card.task-card {
+    cursor: pointer;
+} 
+
+.dragging {
+    opacity: 0.5;
+}
+
+#newTaskBtn{
+    display: flex;
+    justify-content: flex-end;
+}
